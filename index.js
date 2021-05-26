@@ -65,6 +65,13 @@ app.put('/products/:id', async (req, res) => {
 })
 
 
+app.delete('/products/:id', async (req, res) => {
+    const { id } = req.params;
+    const deletedProduct = await Product.findByIdAndDelete(id);
+    res.redirect('/products')
+    res.send('Item Deleted')
+})
+
 app.listen(3000, () => {
     console.log("Connected on PORT 3000")
 })
